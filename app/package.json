@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^1.5.1",
     "eslint": "^5.4.0",
+    "file-loader": "^2.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "nodemon": "^1.18.3",
     "ramda": "^0.25.0",
     "react": "^16.4.2",

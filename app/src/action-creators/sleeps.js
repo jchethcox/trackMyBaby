@@ -17,7 +17,7 @@ export const getSleep = id => async (dispatch, getState) => {
 };
 
 export const setSleeps = async (dispatch, getState) => {
-  const sleeps = await fetch(url).then(res => res.json());
+  const sleeps = await fetch(url).then(res => {console.log(res); res.json()});
   dispatch({ type: SET_SLEEPS, payload: sleeps });
 };
 
