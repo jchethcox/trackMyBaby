@@ -1,13 +1,11 @@
 require("dotenv").config();
-
 const PouchDB = require("pouchdb-core");
 PouchDB.plugin(require("pouchdb-adapter-http"));
 
 const db = new PouchDB(
   `${process.env.COUCHDB_SERVER}${process.env.COUCHDB_DBNAME}`
 );
-
-const data = [
+db.bulkDocs([
   {
     name: "Basic Needs Assistance",
     shortName: "Basic Needs Assistance",
@@ -38,7 +36,6 @@ const data = [
     type: "category",
     _id: "category_education-and-training"
   }
-];
-db.bulkDocs(data)
+])
   .then(result => console.log("Documents successfully uploaded!", result))
   .catch(err => console.log("Error uploading documents", err));
