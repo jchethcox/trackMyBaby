@@ -23,7 +23,6 @@ const initialCurrentPotty = {
   type: "",
   did1: "",
   size2: "",
-  moodImprovement: "",
   dateTime: ""
 };
 
@@ -41,7 +40,6 @@ const initialNewPotty = {
     type: "",
     did1: "",
     size2: "",
-    moodImprovement: "",
     dateTime: ""
   },
   isError: false,

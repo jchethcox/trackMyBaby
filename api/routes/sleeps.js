@@ -28,7 +28,7 @@ const sleepsRoutes = app => {
     const newSleep = propOr({}, "body", req);
 
     const missingFields = checkFields(
-      ["type", "duration", "sleepRating", "dateTime"],
+      ["duration", "sleepRating", "dateTime"],
       newSleep
     );
 
@@ -37,7 +37,7 @@ const sleepsRoutes = app => {
     }
 
     const finalObj = cleanObj(
-      ["type", "duration", "sleepRating", "dateTime"],
+      ["duration", "sleepRating", "dateTime"],
       newSleep
     );
     postSleep(finalObj)
