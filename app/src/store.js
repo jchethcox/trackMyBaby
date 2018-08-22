@@ -18,10 +18,10 @@ const store = createStore(
     newPotty,
     sleeps,
     currentSleep,
-    newSleeps,
+    newSleep,
     fetching
   }),
-  applyMiddlware(thunk)
+  applyMiddleware(thunk)
 );
 
 export default store;

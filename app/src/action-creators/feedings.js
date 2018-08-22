@@ -10,7 +10,7 @@ import {
 const url = process.env.REACT_APP_BASE_URL + "/feedings";
 
 export const getFeeding = id => async (dispatch, getState) => {
-  const category = await fetch(url + "/" + id)
+  const feeding = await fetch(url + "/" + id)
     .then(res => res.json())
     .catch(err => console.log(err));
 
