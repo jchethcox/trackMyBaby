@@ -11,9 +11,17 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import feedingListItems from "../components/listFeedings";
+import pottyListItems from "../components/listPotties";
+import sleepListItems from "../components/listSleeps";
+
 import { Link } from "react-router-dom";
 
 import baby from "../images/clemmy.jpg";
+
+const feedings = feedingListItems;
+const potties = pottyListItems;
+const sleeps = sleepListItems;
 
 const styles = theme => ({
   root: {

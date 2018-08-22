@@ -6,9 +6,9 @@ import "typeface-roboto";
 import store from "./store";
 import { Provider } from "react-redux";
 
-import { setSleeps, getSleep } from "./action-creators/sleeps";
-import { setPotties, getPotty } from "./action-creators/potties";
-import { setFeedings, getFeeding } from "./action-creators/feedings";
+import { getSleeps, getSleep } from "./action-creators/sleeps";
+import { getPotties, getPotty } from "./action-creators/potties";
+import { getFeedings, getFeeding } from "./action-creators/feedings";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,9 +17,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// store.dispatch(setSleeps);
+// store.dispatch(getSleeps);
 // store.dispatch(getSleep);
-// store.dispatch(setPotties);
+// store.dispatch(getPotties);
 // store.dispatch(getPotty);
-// store.dispatch(setFeedings);
+// store.dispatch(getFeedings);
 // store.dispatch(getFeeding);

@@ -1,5 +1,5 @@
 import {
-  SET_SLEEPS,
+  GET_SLEEPS,
   GET_SLEEP,
   NEW_SLEEP_SAVE_FAILED,
   NEW_SLEEP_SAVE_STARTED,
@@ -12,7 +12,7 @@ import { merge, mergeDeepRight } from "ramda";
 
 export const sleeps = (state = [], action) => {
   switch (action.type) {
-    case SET_SLEEPS:
+    case GET_SLEEPS:
       return action.payload;
     default:
       return state;

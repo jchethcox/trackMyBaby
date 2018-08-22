@@ -6,7 +6,7 @@ import { ListItem, Icon, ListItemText, List } from "@material-ui/core";
 
 const li = potty => {
   return (
-    <Link to={`/potties/${potties._id}`} className="router-link">
+    <Link to={`/potties/${potty._id}`} className="router-link">
       <ListItem button>
         <Icon style={{ color: "pink" }}>"toilet"</Icon>
         <ListItemText primary="Potty" secondary={potty.dateTime} />

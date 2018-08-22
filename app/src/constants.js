@@ -1,10 +1,10 @@
-export const SET_FEEDINGS = "SET_FEEDINGS";
+export const GET_FEEDINGS = "GET_FEEDINGS";
 export const GET_FEEDING = "GET_FEEDING";
 
-export const SET_SLEEPS = "SET_SLEEPs";
+export const GET_SLEEPS = "GET_SLEEPs";
 export const GET_SLEEP = "GET_SLEEP";
 
-export const SET_POTTIES = "SET_POTTIES";
+export const GET_POTTIES = "GET_POTTIES";
 export const GET_POTTY = "GET_POTTY";
 
 export const FETCHING_STARTED = "FETCHING_STARTED";

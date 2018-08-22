@@ -1,6 +1,6 @@
 import fetch from "isomorphic-fetch";
 import {
-  SET_POTTIES,
+  GET_POTTIES,
   GET_POTTY,
   NEW_POTTY_SAVE_SUCCEEDED,
   NEW_POTTY_SAVE_FAILED,
@@ -17,9 +17,9 @@ export const getPotty = id => async (dispatch, getState) => {
   dispatch({ type: GET_POTTY, payload: potty });
 };
 
-export const setPotties = async (dispatch, getState) => {
+export const getPotties = async (dispatch, getState) => {
   const potties = await fetch(url).then(res => res.json());
-  dispatch({ type: SET_POTTIES, payload: potties });
+  dispatch({ type: GET_POTTIES, payload: potties });
 };
 
 export const addPotty = history => async (dispatch, getState) => {
@@ -33,7 +33,7 @@ export const addPotty = history => async (dispatch, getState) => {
     .catch(err => dispatch({ type: NEW_POTTY_SAVE_FAILED }));
   if (result.ok) {
     dispatch({ type: NEW_POTTY_SAVE_SUCCEEDED });
-    setPotties(dispatch, getState);
+    getPotties(dispatch, getState);
     history.push("/potties");
   } else {
     dispatch({ type: NEW_POTTY_SAVE_FAILED });
