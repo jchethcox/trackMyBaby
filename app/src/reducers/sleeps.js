@@ -20,6 +20,7 @@ export const sleeps = (state = [], action) => {
 };
 
 const initialCurrentSleep = {
+  type: "",
   duration: "",
   sleepRating: "",
   dateTime: ""
@@ -36,6 +37,7 @@ export const currentSleep = (state = initialCurrentSleep, action) => {
 
 const initialNewSleep = {
   data: {
+    type: "",
     duration: "",
     sleepRating: "",
     dateTime: ""

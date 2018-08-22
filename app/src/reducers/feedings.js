@@ -20,6 +20,7 @@ export const feedings = (state = [], action) => {
 };
 
 const initialCurrentFeeding = {
+  type: "",
   milkAmount: "",
   formulaAmount: "",
   feedingRating: "",
@@ -38,6 +39,7 @@ export const currentFeeding = (state = initialCurrentFeeding, action) => {
 
 const initialNewFeeding = {
   data: {
+    type: "",
     milkAmount: "",
     formulaAmount: "",
     feedingRating: "",
