@@ -12,9 +12,9 @@ const {
 
 const COUCHDB_SERVER = process.env.COUCHDB_SERVER;
 const COUCHDB_DBNAME = process.env.COUCHDB_DBNAME;
-const DB_URL = `${COUCHDB_SERVER}/${COUCHDB_DBNAME}`;
+const DB_URL = `${COUCHDB_SERVER}${COUCHDB_DBNAME}`;
 
-console.log( "=============== " + DB_URL);
+console.log("=============== " + DB_URL);
 const db = new PouchDB(DB_URL);
 const { getAllDocs } = require("./dal-helper");
 const pkGen = require("./lib/pkGen");

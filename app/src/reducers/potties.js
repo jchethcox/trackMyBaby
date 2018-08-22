@@ -20,6 +20,7 @@ export const potties = (state = [], action) => {
 };
 
 const initialCurrentPotty = {
+  type: "",
   did1: "",
   size2: "",
   moodImprovement: "",
@@ -37,6 +38,7 @@ export const currentPotty = (state = initialCurrentPotty, action) => {
 
 const initialNewPotty = {
   data: {
+    type: "",
     did1: "",
     size2: "",
     moodImprovement: "",

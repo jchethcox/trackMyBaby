@@ -6,8 +6,6 @@ import { potties, currentPotty, newPotty } from "./reducers/potties";
 
 import thunk from "redux-thunk";
 
-import { fetching } from "./reducers/fetching";
-
 const store = createStore(
   combineReducers({
     feedings,
@@ -18,8 +16,7 @@ const store = createStore(
     newPotty,
     sleeps,
     currentSleep,
-    newSleep,
-    fetching
+    newSleep
   }),
   applyMiddleware(thunk)
 );

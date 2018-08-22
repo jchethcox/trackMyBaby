@@ -28,7 +28,7 @@ const pottiesRoutes = app => {
     const newPotty = propOr({}, "body", req);
 
     const missingFields = checkFields(
-      ["did1", "size2", "moodImprovement", "dateTime"],
+      ["type", "did1", "size2", "moodImprovement", "dateTime"],
       newPotty
     );
 
@@ -37,7 +37,7 @@ const pottiesRoutes = app => {
     }
 
     const finalObj = cleanObj(
-      ["did1", "size2", "moodImprovement", "dateTime"],
+      ["type", "did1", "size2", "moodImprovement", "dateTime"],
       newPotty
     );
 
