@@ -33,7 +33,7 @@ export const addPotty = history => async (dispatch, getState) => {
     .catch(err => dispatch({ type: NEW_POTTY_SAVE_FAILED }));
   if (result.ok) {
     dispatch({ type: NEW_POTTY_SAVE_SUCCEEDED });
-    // setPotties(dispatch, getState);
+    setPotties(dispatch, getState);
     history.push("/potties");
   } else {
     dispatch({ type: NEW_POTTY_SAVE_FAILED });

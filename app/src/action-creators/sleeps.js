@@ -32,7 +32,7 @@ export const addSleep = history => async (dispatch, getState) => {
     .catch(err => dispatch({ type: NEW_SLEEP_SAVE_FAILED }));
   if (result.ok) {
     dispatch({ type: NEW_SLEEP_SAVE_SUCCEEDED });
-    // setSleeps(dispatch, getState);
+    setSleeps(dispatch, getState);
     history.push("/sleeps");
   } else {
     dispatch({ type: NEW_SLEEP_SAVE_FAILED });
