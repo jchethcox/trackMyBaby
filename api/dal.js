@@ -14,10 +14,8 @@ const COUCHDB_SERVER = process.env.COUCHDB_SERVER;
 const COUCHDB_DBNAME = process.env.COUCHDB_DBNAME;
 const DB_URL = `${COUCHDB_SERVER}${COUCHDB_DBNAME}`;
 
-console.log("=============== " + DB_URL);
 const db = new PouchDB(DB_URL);
 const { getAllDocs } = require("./dal-helper");
-const pkGen = require("./lib/pkGen");
 
 const getFeedings = query => {
   const [key, value] = not(isEmpty(query)) ? split(":", query) : ["", ""];
@@ -37,7 +35,7 @@ const getFeeding = id => db.get(id);
 
 const postFeeding = feeding => {
   const modifiedFeeding = merge(feeding, {
-    _id: pkGen("_", feeding.name),
+    _id: ("feeding_", feeding.dateTime),
     type: "feeding"
   });
   return db.put(modifiedFeeding);
@@ -61,7 +59,7 @@ const getPotty = id => db.get(id);
 
 const postPotty = potty => {
   const modifiedPotty = merge(potty, {
-    _id: pkGen("_", potty.name),
+    _id: ("potty_", potty.dateTime),
     type: "potty"
   });
   return db.put(modifiedPotty);
@@ -85,7 +83,7 @@ const getSleep = id => db.get(id);
 
 const postSleep = sleep => {
   const modifiedSleep = merge(sleep, {
-    _id: pkGen("_", sleep.name),
+    _id: ("sleep_", sleep.dateTime),
     type: "sleep"
   });
   return db.put(modifiedSleep);

@@ -1,5 +1,5 @@
 import {
-  SET_POTTIES,
+  GET_POTTIES,
   GET_POTTY,
   NEW_POTTY_SAVE_FAILED,
   NEW_POTTY_SAVE_STARTED,
@@ -12,7 +12,7 @@ import { merge, mergeDeepRight } from "ramda";
 
 export const potties = (state = [], action) => {
   switch (action.type) {
-    case SET_POTTIES:
+    case GET_POTTIES:
       return action.payload;
     default:
       return state;
@@ -23,7 +23,6 @@ const initialCurrentPotty = {
   type: "",
   did1: "",
   size2: "",
-  moodImprovement: "",
   dateTime: ""
 };
 
@@ -41,7 +40,6 @@ const initialNewPotty = {
     type: "",
     did1: "",
     size2: "",
-    moodImprovement: "",
     dateTime: ""
   },
   isError: false,

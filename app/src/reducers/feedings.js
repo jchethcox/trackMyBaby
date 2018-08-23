@@ -1,5 +1,5 @@
 import {
-  SET_FEEDINGS,
+  GET_FEEDINGS,
   GET_FEEDING,
   NEW_FEEDING_SAVE_FAILED,
   NEW_FEEDING_SAVE_STARTED,
@@ -12,7 +12,7 @@ import { merge, mergeDeepRight } from "ramda";
 
 export const feedings = (state = [], action) => {
   switch (action.type) {
-    case SET_FEEDINGS:
+    case GET_FEEDINGS:
       return action.payload;
     default:
       return state;

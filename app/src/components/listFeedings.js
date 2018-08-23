@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { map, compose } from "ramda";
+import { map, last } from "ramda";
 import { Link } from "react-router-dom";
 import { ListItem, Icon, ListItemText, List } from "@material-ui/core";
 
@@ -23,7 +23,8 @@ const feedingListItems = props => (
 
 const mapStateToProps = state => {
   return {
-    feedings: compose()(state.feedings)
+    feedings: state.feedings,
+    lastFeeding: last(state.feedings)
   };
 };
 

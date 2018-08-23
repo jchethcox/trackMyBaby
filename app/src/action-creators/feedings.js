@@ -1,6 +1,6 @@
 import fetch from "isomorphic-fetch";
 import {
-  SET_FEEDINGS,
+  GET_FEEDINGS,
   GET_FEEDING,
   NEW_FEEDING_SAVE_FAILED,
   NEW_FEEDING_SAVE_STARTED,
@@ -17,9 +17,9 @@ export const getFeeding = id => async (dispatch, getState) => {
   dispatch({ type: GET_FEEDING, payload: feeding });
 };
 
-export const setFeedings = async (dispatch, getState) => {
+export const getFeedings = async (dispatch, getState) => {
   const feedings = await fetch(url).then(res => res.json());
-  dispatch({ type: SET_FEEDINGS, payload: feedings });
+  dispatch({ type: GET_FEEDINGS, payload: feedings });
 };
 
 export const addFeeding = history => async (dispatch, getState) => {
@@ -33,7 +33,7 @@ export const addFeeding = history => async (dispatch, getState) => {
     .catch(err => dispatch({ type: NEW_FEEDING_SAVE_FAILED }));
   if (result.ok) {
     dispatch({ type: NEW_FEEDING_SAVE_SUCCEEDED });
-    setFeedings(dispatch, getState);
+    getFeedings(dispatch, getState);
     history.push("/feedings");
   } else {
     dispatch({ type: NEW_FEEDING_SAVE_FAILED });
