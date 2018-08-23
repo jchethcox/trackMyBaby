@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { map, compose } from "ramda";
+import { map, last } from "ramda";
 import { Link } from "react-router-dom";
 import { ListItem, Icon, ListItemText, List } from "@material-ui/core";
 
@@ -23,7 +23,8 @@ const sleepListItems = props => (
 
 const mapStateToProps = state => {
   return {
-    sleeps: compose()(state.sleeps)
+    sleeps: state.sleeps,
+    lastSleep: last(state.sleeps)
   };
 };
 

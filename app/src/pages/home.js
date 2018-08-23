@@ -11,6 +11,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import { takeLast } from "ramda";
+
 import feedingListItems from "../components/listFeedings";
 import pottyListItems from "../components/listPotties";
 import sleepListItems from "../components/listSleeps";
@@ -22,6 +24,16 @@ import baby from "../images/clemmy.jpg";
 const feedings = feedingListItems;
 const potties = pottyListItems;
 const sleeps = sleepListItems;
+
+const lastFeeding = feedings.lastFeeding;
+const lastPotty = potties.lastPotty;
+const lastSleep = sleeps.lastSleep;
+
+const recents = [lastFeeding, lastPotty, lastSleep];
+
+const last5Feedings = takeLast(5, feedings);
+const last5Potties = takeLast(5, potties);
+const last5Sleeps = takeLast(5, sleeps);
 
 const styles = theme => ({
   root: {
@@ -64,7 +76,7 @@ function Home(props) {
             </List>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item sm>
           <Paper className={classes.paper}>
             <Button
               variant="contained"
@@ -75,7 +87,7 @@ function Home(props) {
             </Button>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item sm>
           <Paper className={classes.paper}>
             <Button
               variant="contained"
@@ -86,7 +98,7 @@ function Home(props) {
             </Button>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item sm>
           <Paper className={classes.paper}>
             <Button
               variant="contained"
@@ -100,13 +112,13 @@ function Home(props) {
       </Grid>
       <Grid container spacing={24}>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
+          <Paper className={classes.paper}>List 5 Feedings</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>List 5 Potties</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>List 5 Sleeps</Paper>
         </Grid>
       </Grid>
     </div>
