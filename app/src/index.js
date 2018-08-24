@@ -17,9 +17,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// store.dispatch(getSleeps);
-// store.dispatch(getSleep);
-// store.dispatch(getPotties);
-// store.dispatch(getPotty);
-// store.dispatch(getFeedings);
-// store.dispatch(getFeeding);
+store.dispatch(getSleeps);
+store.dispatch(getSleep);
+store.dispatch(getPotties);
+store.dispatch(getPotty);
+store.dispatch(getFeedings);
+store.dispatch(getFeeding);

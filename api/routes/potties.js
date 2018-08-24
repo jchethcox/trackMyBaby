@@ -9,7 +9,7 @@ const pottiesRoutes = app => {
     const query = pathOr("", ["query", "filter"], req);
 
     getPotties(query)
-      .then((potty = res.send(potty)))
+      .then(potties => res.send(potties))
       .catch(err => {
         next(new NodeHTTPError(err.status, err.message, err));
       });
@@ -24,7 +24,7 @@ const pottiesRoutes = app => {
       });
   });
 
-  app.post("potties", (req, res, next) => {
+  app.post("/potties", (req, res, next) => {
     const newPotty = propOr({}, "body", req);
 
     const missingFields = checkFields(["did1", "size2", "dateTime"], newPotty);

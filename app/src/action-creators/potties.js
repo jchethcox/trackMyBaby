@@ -13,7 +13,6 @@ export const getPotty = id => async (dispatch, getState) => {
   const potty = await fetch(url + "/" + id)
     .then(res => res.json())
     .catch(err => console.log(err));
-
   dispatch({ type: GET_POTTY, payload: potty });
 };
 

@@ -13,12 +13,12 @@ export const getFeeding = id => async (dispatch, getState) => {
   const feeding = await fetch(url + "/" + id)
     .then(res => res.json())
     .catch(err => console.log(err));
-
   dispatch({ type: GET_FEEDING, payload: feeding });
 };
 
 export const getFeedings = async (dispatch, getState) => {
   const feedings = await fetch(url).then(res => res.json());
+  console.log(feedings);
   dispatch({ type: GET_FEEDINGS, payload: feedings });
 };
 

@@ -1,33 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-import { map, last } from "ramda";
+import { map, reverse } from "ramda";
 import { Link } from "react-router-dom";
-import { ListItem, Icon, ListItemText, List } from "@material-ui/core";
+import { ListItem, ListItemText, List } from "@material-ui/core";
 
 const li = sleep => {
   return (
     <Link to={`/sleeps/${sleep._id}`} className="router-link">
       <ListItem button>
-        <Icon style={{ color: "pink" }}>"bed"</Icon>
+        {/* <Icon style={{ color: "pink" }}>"bed"</Icon> */}
         <ListItemText primary="Sleep" secondary={sleep.dateTime} />
       </ListItem>
     </Link>
   );
 };
 
-const sleepListItems = props => (
+const SleepListItems = props => (
   <div>
-    <List>{map(li, props.sleeps)}</List>
+    <List>{reverse(map(li, props.sleeps))}</List>
   </div>
 );
 
 const mapStateToProps = state => {
   return {
-    sleeps: state.sleeps,
-    lastSleep: last(state.sleeps)
+    sleeps: state.sleeps
   };
 };
 
 const connector = connect(mapStateToProps);
 
-export default connector(sleepListItems);
+export default connector(SleepListItems);

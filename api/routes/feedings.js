@@ -5,13 +5,11 @@ const cleanObj = require("../lib/cleanObj");
 const checkFields = require("../lib/checkFields");
 
 const feedingsRoutes = app => {
-  app.get("/", (req, res) => res.send("Track My Baby"));
-
   app.get("/feedings", (req, res, next) => {
     const query = pathOr("", ["query", "filter"], req);
 
     getFeedings(query)
-      .then(feeding => res.send(feedings))
+      .then(feedings => res.send(feedings))
       .catch(err => {
         next(new NodeHTTPError(err.status, err.message, err));
       });

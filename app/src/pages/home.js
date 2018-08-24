@@ -1,39 +1,21 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+//import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import classNames from "classnames";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+// import Avatar from "@material-ui/core/Avatar";
+// import classNames from "classnames";
+// import List from "@material-ui/core/List";
+// import ListItem from "@material-ui/core/ListItem";
+// import ListItemText from "@material-ui/core/ListItemText";
 
-import { takeLast } from "ramda";
-
-import feedingListItems from "../components/listFeedings";
-import pottyListItems from "../components/listPotties";
-import sleepListItems from "../components/listSleeps";
-
-import { Link } from "react-router-dom";
+import FeedingListItems from "../components/listFeedings";
+import PottyListItems from "../components/listPotties";
+import SleepListItems from "../components/listSleeps";
 
 import baby from "../images/clemmy.jpg";
-
-const feedings = feedingListItems;
-const potties = pottyListItems;
-const sleeps = sleepListItems;
-
-const lastFeeding = feedings.lastFeeding;
-const lastPotty = potties.lastPotty;
-const lastSleep = sleeps.lastSleep;
-
-const recents = [lastFeeding, lastPotty, lastSleep];
-
-const last5Feedings = takeLast(5, feedings);
-const last5Potties = takeLast(5, potties);
-const last5Sleeps = takeLast(5, sleeps);
 
 const styles = theme => ({
   root: {
@@ -45,8 +27,6 @@ const styles = theme => ({
     color: theme.palette.text.secondary
   }
 });
-
-var mostRecent = ["Feeding 3:30PM", "Potty 12:17PM", "Sleep 4:10PM"];
 
 function Home(props) {
   const { classes } = props;
@@ -61,19 +41,7 @@ function Home(props) {
             src={logo}
             className={classNames(classes.avatar, classes.bigAvatar)}
           />*/}
-            <img src={baby} width="300" height="400" />
-          </Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>
-            Most Recent
-            <List component="nav">
-              {mostRecent.map(item => (
-                <ListItem button>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
+            <img src={baby} alt="Baby" width="300" height="400" />
           </Paper>
         </Grid>
         <Grid item sm>
@@ -112,13 +80,22 @@ function Home(props) {
       </Grid>
       <Grid container spacing={24}>
         <Grid item xs>
-          <Paper className={classes.paper}>List 5 Feedings</Paper>
+          <Paper className={classes.paper}>
+            Feedings
+            <FeedingListItems />
+          </Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>List 5 Potties</Paper>
+          <Paper className={classes.paper}>
+            Potties
+            <PottyListItems />
+          </Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>List 5 Sleeps</Paper>
+          <Paper className={classes.paper}>
+            Sleeps
+            <SleepListItems />
+          </Paper>
         </Grid>
       </Grid>
     </div>
