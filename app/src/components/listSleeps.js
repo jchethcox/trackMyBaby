@@ -12,9 +12,9 @@ const li = sleep => {
   const hour = x.getHours();
   const minute = x.getMinutes();
   const time = `${hour}:${minute}`;
-  const rating = sleep.sleepRating;
+  // const rating = sleep.sleepRating;
   const duration = sleep.duration;
-  const second = `Time: ${time}, Date: ${date}, Rating: ${rating}. Duration: ${duration} hours`;
+  const second = `Time: ${time}, Date: ${date}, Rating: 1. Duration: ${duration} hours`;
   return (
     <Link to={`/sleeps/${sleep._id}`} className="router-link">
       <ListItem button>

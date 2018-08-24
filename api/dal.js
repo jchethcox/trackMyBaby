@@ -60,8 +60,9 @@ const getPotty = id => db.get(id);
 
 const postPotty = potty => {
   const modifiedPotty = merge(potty, {
-    _id: ("potty_", potty.dateTime),
-    type: "potty"
+    _id: `potty_${new Date().toISOString()}`,
+    type: "potty",
+    dateTime: new Date().toISOString()
   });
   return db.put(modifiedPotty);
 };
@@ -84,8 +85,9 @@ const getSleep = id => db.get(id);
 
 const postSleep = sleep => {
   const modifiedSleep = merge(sleep, {
-    _id: ("sleep_", sleep.dateTime),
-    type: "sleep"
+    _id: `sleep_${new Date().toISOString()}`,
+    type: "sleep",
+    dateTime: new Date().toISOString()
   });
   return db.put(modifiedSleep);
 };

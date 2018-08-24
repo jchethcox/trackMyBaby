@@ -148,10 +148,12 @@ class HomeComp extends React.Component {
           onClose={this.handleFeedingClose}
         />
         <AddPottyModal
+          history={history}
           open={this.state.pottyOpen}
           onClose={this.handlePottyClose}
         />
         <AddSleepModal
+          history={history}
           open={this.state.sleepOpen}
           onClose={this.handleSleepClose}
         />

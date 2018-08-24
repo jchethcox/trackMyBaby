@@ -12,9 +12,9 @@ const li = potty => {
   const hour = x.getHours() + 1;
   const minute = x.getMinutes() + 1;
   const time = `${hour}:${minute}`;
-  const didPee = potty.did1;
-  const poopSize = potty.size2;
-  const second = `Time: ${time}, Date: ${date}, Did #1: ${didPee}, #2 Size: ${poopSize}`;
+  // const didPee = potty.did1;
+  // const poopSize = potty.size2;
+  const second = `Time: ${time}, Date: ${date}, Did #1: true, #2 Size: 2`;
   return (
     <Link to={`/potties/${potty._id}`} className="router-link">
       <ListItem button>

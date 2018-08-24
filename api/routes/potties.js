@@ -27,13 +27,13 @@ const pottiesRoutes = app => {
   app.post("/potties", (req, res, next) => {
     const newPotty = propOr({}, "body", req);
 
-    const missingFields = checkFields(["did1", "size2", "dateTime"], newPotty);
+    const missingFields = checkFields(["did1", "size2"], newPotty);
 
     if (not(isEmpty(missingFields))) {
       next(new NodeHTTPError(400, `missing fields: ${missingFields}`));
     }
 
-    const finalObj = cleanObj(["did1", "size2", "dateTime"], newPotty);
+    const finalObj = cleanObj(["did1", "size2"], newPotty);
 
     postPotty(finalObj)
       .then(addResult => {

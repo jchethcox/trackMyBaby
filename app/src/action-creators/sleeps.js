@@ -33,7 +33,7 @@ export const addSleep = history => async (dispatch, getState) => {
   if (result.ok) {
     dispatch({ type: NEW_SLEEP_SAVE_SUCCEEDED });
     getSleeps(dispatch, getState);
-    history.push("/sleeps");
+    // history.push("/sleeps");
   } else {
     dispatch({ type: NEW_SLEEP_SAVE_FAILED });
   }

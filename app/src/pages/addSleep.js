@@ -21,6 +21,10 @@ import Radio from "@material-ui/core/Radio";
 // import red from "@material-ui/core/colors/red";
 // import green from "@material-ui/core/colors/green";
 import yellow from "@material-ui/core/colors/yellow";
+import { connect } from "react-redux";
+
+import { addSleep } from "../action-creators/sleeps";
+import { NEW_SLEEP_FORM_UPDATED } from "../constants";
 
 const styles = {
   redRoot: {
@@ -60,7 +64,15 @@ class AddSleep extends React.Component {
   };
 
   render() {
-    const { classes, onClose, selectedValue, ...other } = this.props;
+    const {
+      classes,
+      onClose,
+      selectedValue,
+      sleep,
+      onChange,
+      history,
+      ...other
+    } = this.props;
 
     return (
       <Dialog
@@ -70,65 +82,86 @@ class AddSleep extends React.Component {
       >
         <DialogTitle id="simple-dialog-title">Add Sleep</DialogTitle>
         <div>
-          <TextField
-            id="duration"
-            label="Duration (min.)"
-            className={classes.textField}
-            margin="normal"
-          />
-          <br />
-          Rating
-          <Radio
-            checked={this.state.qualityScore === "red"}
-            onChange={this.handleRadioChange}
-            value="red"
-            name="radio-button-demo"
-            disableRipple
-            classes={{
-              root: classes.redRoot,
-              checked: classes.checked
-            }}
-          />
-          <Radio
-            checked={this.state.qualityScore === "yellow"}
-            onChange={this.handleRadioChange}
-            value="yellow"
-            name="radio-button-demo"
-            disableRipple
-            classes={{
-              root: classes.yellowRoot,
-              checked: classes.checked
-            }}
-          />
-          <Radio
-            checked={this.state.qualityScore === "green"}
-            onChange={this.handleRadioChange}
-            value="green"
-            name="radio-button-demo"
-            disableRipple
-            classes={{
-              root: classes.greenRoot,
-              checked: classes.checked
-            }}
-          />
-          <br />
-          <span>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={this.handleOkClick}
-              mini
-              //variant="fab"
-            >
-              OK
-            </Button>
-          </span>
+          <form
+            autoComplete="off"
+            onSubmit={this.props.addSleep(this.props.history)}
+          >
+            <TextField
+              id="duration"
+              label="Duration (min.)"
+              value={sleep.duration}
+              className={classes.textField}
+              onChange={e => onChange("duration", e.target.value)}
+              margin="normal"
+            />
+            <br />
+            Rating
+            <Radio
+              checked={this.state.qualityScore === "red"}
+              onChange={this.handleRadioChange}
+              value="red"
+              name="radio-button-demo"
+              disableRipple
+              classes={{
+                root: classes.redRoot,
+                checked: classes.checked
+              }}
+            />
+            <Radio
+              checked={this.state.qualityScore === "yellow"}
+              onChange={this.handleRadioChange}
+              value="yellow"
+              name="radio-button-demo"
+              disableRipple
+              classes={{
+                root: classes.yellowRoot,
+                checked: classes.checked
+              }}
+            />
+            <Radio
+              checked={this.state.qualityScore === "green"}
+              onChange={this.handleRadioChange}
+              value="green"
+              name="radio-button-demo"
+              disableRipple
+              classes={{
+                root: classes.greenRoot,
+                checked: classes.checked
+              }}
+            />
+            <br />
+            <span>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.handleOkClick}
+                mini
+                //variant="fab"
+              >
+                OK
+              </Button>
+            </span>
+          </form>
         </div>
       </Dialog>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  sleep: state.newSleep.data
+});
+
+const mapActionstoProp = dispatch => ({
+  addSleep: history => e => {
+    console.log("in addSleep action");
+    e.preventDefault();
+    dispatch(addSleep(history));
+  },
+  onChange: (field, value) =>
+    dispatch({ type: NEW_SLEEP_FORM_UPDATED, payload: { [field]: value } })
+});
 
 AddSleep.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -136,6 +169,11 @@ AddSleep.propTypes = {
   selectedValue: PropTypes.string
 };
 
-const AddSleepModal = withStyles(styles)(AddSleep);
+const connector = connect(
+  mapStateToProps,
+  mapActionstoProp
+);
+
+const AddSleepModal = connector(withStyles(styles)(AddSleep));
 
 export default AddSleepModal;

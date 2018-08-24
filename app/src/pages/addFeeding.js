@@ -174,7 +174,7 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = dispatch => ({
   addFeeding: history => e => {
-    console.log("in addFeeding acton");
+    console.log("in addFeeding action");
     e.preventDefault();
     dispatch(addFeeding(history));
   },

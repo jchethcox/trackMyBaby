@@ -27,19 +27,13 @@ const sleepsRoutes = app => {
   app.post("/sleeps", (req, res, next) => {
     const newSleep = propOr({}, "body", req);
 
-    const missingFields = checkFields(
-      ["duration", "sleepRating", "dateTime"],
-      newSleep
-    );
+    const missingFields = checkFields(["duration", "sleepRating"], newSleep);
 
     if (not(isEmpty(missingFields))) {
       next(new NodeHTTPError(400, `missing fields: ${missingFields}`));
     }
 
-    const finalObj = cleanObj(
-      ["duration", "sleepRating", "dateTime"],
-      newSleep
-    );
+    const finalObj = cleanObj(["duration", "sleepRating"], newSleep);
     postSleep(finalObj)
       .then(addResult => {
         console.log(addResult);
