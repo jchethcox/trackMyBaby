@@ -1,11 +1,9 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
 import classNames from "classnames";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -18,7 +16,7 @@ import pottyListItems from "../components/listPotties";
 import sleepListItems from "../components/listSleeps";
 
 import { Link } from "react-router-dom";
-
+import SimpleDialogWrapped from "./dialog"
 import baby from "../images/clemmy.jpg";
 
 const feedings = feedingListItems;
@@ -48,8 +46,24 @@ const styles = theme => ({
 
 var mostRecent = ["Feeding 3:30PM", "Potty 12:17PM", "Sleep 4:10PM"];
 
-function Home(props) {
-  const { classes } = props;
+class HomeComp extends React.Component {
+  state = {
+    open: false,
+  };
+
+  openFeedingModal = () => {
+
+    this.setState({
+      open: true,
+    });
+  }
+
+  handleClose = value => {
+    this.setState({ open: false });
+  };
+
+render() {
+  const { classes } = this.props;
 
   return (
     <div className={classes.root}>
@@ -82,6 +96,7 @@ function Home(props) {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={this.openFeedingModal}
             >
               Add Feeding
             </Button>
@@ -121,12 +136,19 @@ function Home(props) {
           <Paper className={classes.paper}>List 5 Sleeps</Paper>
         </Grid>
       </Grid>
+      <SimpleDialogWrapped
+        open={this.state.open}
+        onClose={this.handleClose}
+      />
     </div>
   );
 }
+}
 
-Home.propTypes = {
+HomeComp.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Home);
+const Home = withStyles(styles)(HomeComp);
+
+export default Home;
