@@ -11,27 +11,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import { takeLast } from "ramda";
 
-import feedingListItems from "../components/listFeedings";
-import pottyListItems from "../components/listPotties";
-import sleepListItems from "../components/listSleeps";
+import FeedingListItems from "../components/listFeedings";
+import PottyListItems from "../components/listPotties";
+import SleepListItems from "../components/listSleeps";
 
 import { Link } from "react-router-dom";
-import SimpleDialogWrapped from "./dialog"
+import SimpleDialogWrapped from "./dialog";
 import baby from "../images/clemmy.jpg";
-
-const feedings = feedingListItems;
-const potties = pottyListItems;
-const sleeps = sleepListItems;
-
-const lastFeeding = feedings.lastFeeding;
-const lastPotty = potties.lastPotty;
-const lastSleep = sleeps.lastSleep;
-
-const recents = [lastFeeding, lastPotty, lastSleep];
-
-const last5Feedings = takeLast(5, feedings);
-const last5Potties = takeLast(5, potties);
-const last5Sleeps = takeLast(5, sleeps);
 
 const styles = theme => ({
   root: {
@@ -44,105 +30,99 @@ const styles = theme => ({
   }
 });
 
-var mostRecent = ["Feeding 3:30PM", "Potty 12:17PM", "Sleep 4:10PM"];
-
 class HomeComp extends React.Component {
   state = {
-    open: false,
+    open: false
   };
 
   openFeedingModal = () => {
-
     this.setState({
-      open: true,
+      open: true
     });
-  }
+  };
 
   handleClose = value => {
     this.setState({ open: false });
   };
 
-render() {
-  const { classes } = this.props;
+  render() {
+    const { classes } = this.props;
 
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={24}>
-        <Grid item xs>
-          <Paper className={classes.paper}>
-            {/*<Avatar
+    return (
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              {/*<Avatar
             alt="Clemmy"
             src={logo}
             className={classNames(classes.avatar, classes.bigAvatar)}
           />*/}
-            <img src={baby} width="300" height="400" />
-          </Paper>
+              <img src={baby} alt="Baby" width="300" height="400" />
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper className={classes.paper}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.openFeedingModal}
+              >
+                Add Feeding
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper className={classes.paper}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                Add Potty
+              </Button>
+            </Paper>
+          </Grid>
+          <Grid item sm>
+            <Paper className={classes.paper}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                Add Sleep
+              </Button>
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>
-            Most Recent
-            <List component="nav">
-              {mostRecent.map(item => (
-                <ListItem button>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-          </Paper>
+        <Grid container spacing={24}>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              Feedings
+              <FeedingListItems />
+            </Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              Potties
+              <PottyListItems />
+            </Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              Sleeps
+              <SleepListItems />
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item sm>
-          <Paper className={classes.paper}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={this.openFeedingModal}
-            >
-              Add Feeding
-            </Button>
-          </Paper>
-        </Grid>
-        <Grid item sm>
-          <Paper className={classes.paper}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Add Potty
-            </Button>
-          </Paper>
-        </Grid>
-        <Grid item sm>
-          <Paper className={classes.paper}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Add Sleep
-            </Button>
-          </Paper>
-        </Grid>
-      </Grid>
-      <Grid container spacing={24}>
-        <Grid item xs>
-          <Paper className={classes.paper}>List 5 Feedings</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>List 5 Potties</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>List 5 Sleeps</Paper>
-        </Grid>
-      </Grid>
-      <SimpleDialogWrapped
-        open={this.state.open}
-        onClose={this.handleClose}
-      />
-    </div>
-  );
-}
+        <SimpleDialogWrapped
+          open={this.state.open}
+          onClose={this.handleClose}
+        />
+      </div>
+    );
+  }
 }
 
 HomeComp.propTypes = {

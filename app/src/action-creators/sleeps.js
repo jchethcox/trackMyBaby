@@ -17,10 +17,7 @@ export const getSleep = id => async (dispatch, getState) => {
 };
 
 export const getSleeps = async (dispatch, getState) => {
-  const sleeps = await fetch(url).then(res => {
-    console.log(res);
-    res.json();
-  });
+  const sleeps = await fetch(url).then(res => res.json());
   dispatch({ type: GET_SLEEPS, payload: sleeps });
 };
 
@@ -31,7 +28,7 @@ export const addSleep = history => async (dispatch, getState) => {
     method: "POST",
     body: JSON.stringify(getState().newSleep.data)
   })
-    .then(res => res.json)
+    .then(res => res.json())
     .catch(err => dispatch({ type: NEW_SLEEP_SAVE_FAILED }));
   if (result.ok) {
     dispatch({ type: NEW_SLEEP_SAVE_SUCCEEDED });
