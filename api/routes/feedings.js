@@ -28,7 +28,7 @@ const feedingsRoutes = app => {
     const newFeeding = propOr({}, "body", req);
 
     const missingFields = checkFields(
-      ["milkAmount", "formulaAmount", "feedingRating", "duration", "dateTime"],
+      ["milkAmount", "formulaAmount", "feedingRating", "duration"],
       newFeeding
     );
 
@@ -37,7 +37,7 @@ const feedingsRoutes = app => {
     }
 
     const finalObj = cleanObj(
-      ["milkAmount", "formulaAmount", "feedingRating", "duration", "dateTime"],
+      ["milkAmount", "formulaAmount", "feedingRating", "duration"],
       newFeeding
     );
 

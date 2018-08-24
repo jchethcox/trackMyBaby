@@ -4,19 +4,21 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import classNames from "classnames";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
-import { takeLast } from "ramda";
+// import { Link } from "react-router-dom";
+// import classNames from "classnames";
+// import List from "@material-ui/core/List";
+// import ListItem from "@material-ui/core/ListItem";
+// import ListItemText from "@material-ui/core/ListItemText";
 
 import FeedingListItems from "../components/listFeedings";
 import PottyListItems from "../components/listPotties";
 import SleepListItems from "../components/listSleeps";
 
-import { Link } from "react-router-dom";
-import SimpleDialogWrapped from "./dialog";
+import AddFeedingModal from "./addFeeding";
+import AddPottyModal from "./addPotty";
+import AddSleepModal from "./addSleep";
+
 import baby from "../images/clemmy.jpg";
 
 const styles = theme => ({
@@ -32,21 +34,43 @@ const styles = theme => ({
 
 class HomeComp extends React.Component {
   state = {
-    open: false
+    feedingOpen: false,
+    pottyOpen: false,
+    sleepOpen: false
   };
 
   openFeedingModal = () => {
     this.setState({
-      open: true
+      feedingOpen: true
     });
   };
 
-  handleClose = value => {
-    this.setState({ open: false });
+  openPottyModal = () => {
+    this.setState({
+      pottyOpen: true
+    });
+  };
+
+  openSleepModal = () => {
+    this.setState({
+      sleepOpen: true
+    });
+  };
+
+  handleFeedingClose = value => {
+    this.setState({ feedingOpen: false });
+  };
+
+  handlePottyClose = value => {
+    this.setState({ pottyOpen: false });
+  };
+
+  handleSleepClose = value => {
+    this.setState({ sleepOpen: false });
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, history } = this.props;
 
     return (
       <div className={classes.root}>
@@ -79,6 +103,7 @@ class HomeComp extends React.Component {
                 variant="contained"
                 color="primary"
                 className={classes.button}
+                onClick={this.openPottyModal}
               >
                 Add Potty
               </Button>
@@ -90,6 +115,7 @@ class HomeComp extends React.Component {
                 variant="contained"
                 color="primary"
                 className={classes.button}
+                onClick={this.openSleepModal}
               >
                 Add Sleep
               </Button>
@@ -116,9 +142,18 @@ class HomeComp extends React.Component {
             </Paper>
           </Grid>
         </Grid>
-        <SimpleDialogWrapped
-          open={this.state.open}
-          onClose={this.handleClose}
+        <AddFeedingModal
+          history={history}
+          open={this.state.feedingOpen}
+          onClose={this.handleFeedingClose}
+        />
+        <AddPottyModal
+          open={this.state.pottyOpen}
+          onClose={this.handlePottyClose}
+        />
+        <AddSleepModal
+          open={this.state.sleepOpen}
+          onClose={this.handleSleepClose}
         />
       </div>
     );

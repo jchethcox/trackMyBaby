@@ -34,7 +34,7 @@ export const addFeeding = history => async (dispatch, getState) => {
   if (result.ok) {
     dispatch({ type: NEW_FEEDING_SAVE_SUCCEEDED });
     getFeedings(dispatch, getState);
-    history.push("/feedings");
+    //history.push("/feedings");
   } else {
     dispatch({ type: NEW_FEEDING_SAVE_FAILED });
   }

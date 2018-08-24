@@ -35,8 +35,9 @@ const getFeeding = id => db.get(id);
 
 const postFeeding = feeding => {
   const modifiedFeeding = merge(feeding, {
-    _id: ("feeding_", feeding.dateTime),
-    type: "feeding"
+    _id: `feeding_${new Date().toISOString()}`,
+    type: "feeding",
+    dateTime: new Date().toISOString()
   });
   return db.put(modifiedFeeding);
 };

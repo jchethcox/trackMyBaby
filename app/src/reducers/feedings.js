@@ -42,7 +42,7 @@ const initialNewFeeding = {
     type: "",
     milkAmount: "",
     formulaAmount: "",
-    feedingRating: "",
+    feedingRating: 2,
     duration: "",
     dateTime: ""
   },
