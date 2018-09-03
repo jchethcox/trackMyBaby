@@ -9,8 +9,8 @@ const li = potty => {
   const month = x.getMonth() + 1;
   const day = x.getDate();
   const date = `${month}/${day}`;
-  const hour = x.getHours() + 1;
-  const minute = x.getMinutes() + 1;
+  const hour = x.getHours();
+  const minute = x.getMinutes();
   const time = `${hour}:${minute}`;
   // const didPee = potty.did1;
   // const poopSize = potty.size2;

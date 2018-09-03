@@ -21,15 +21,19 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/feedings" component={Feedings} />
+          {/* 
+          <Route exact path="/feedings" component={Feedings} />
+          <Route exact path="/sleeps" component={Sleeps} />
+          <Route exact path="/potties" component={Potties} /> 
+          */}
+          {/* 
           <Route exact path="/feedings/new" component={NewFeeding} />
           <Route exact path="/feedings/:id" component={ViewFeeding} />
-          <Route exact path="/sleeps" component={Sleeps} />
           <Route exact path="/sleeps/new" component={NewSleep} />
           <Route exact path="/sleeps/:id" component={ViewSleep} />
-          <Route exact path="/potties" component={Potties} />
           <Route exact path="/potties/new" component={NewPotty} />
-          <Route exact path="/potties/:id" component={ViewPotty} /> */}
+          <Route exact path="/potties/:id" component={ViewPotty} /> 
+          */}
         </Switch>
       </BrowserRouter>
     );

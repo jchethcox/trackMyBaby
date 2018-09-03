@@ -91,7 +91,7 @@ class AddSleep extends React.Component {
               label="Duration (min.)"
               value={sleep.duration}
               className={classes.textField}
-              onChange={e => onChange("duration", e.target.value)}
+              onChange={e => onChange("duration", Number(e.target.value))}
               margin="normal"
             />
             <br />
@@ -133,6 +133,7 @@ class AddSleep extends React.Component {
             <span>
               <Button
                 variant="contained"
+                type="submit"
                 color="primary"
                 className={classes.button}
                 onClick={this.handleOkClick}

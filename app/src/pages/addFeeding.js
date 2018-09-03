@@ -150,13 +150,12 @@ class AddFeeding extends React.Component {
             <br />
             <span>
               <Button
-                variant="contained"
                 type="submit"
                 color="primary"
                 className={classes.button}
                 onClick={this.handleOkClick}
                 mini
-                // variant="fab"
+                variant="fab"
               >
                 OK
               </Button>

@@ -86,7 +86,10 @@ class AddPotty extends React.Component {
       >
         <DialogTitle id="simple-dialog-title">Add Potty</DialogTitle>
         <div>
-          <form>
+          <form
+            autoComplete="off"
+            onSubmit={this.props.addPotty(this.props.history)}
+          >
             Pee'd?
             <Radio
               checked={this.state.did1 === "red"}
