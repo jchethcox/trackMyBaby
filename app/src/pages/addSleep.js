@@ -88,7 +88,7 @@ class AddSleep extends React.Component {
           >
             <TextField
               id="duration"
-              label="Duration (min.)"
+              label="Duration (hours)"
               value={sleep.duration}
               className={classes.textField}
               onChange={e => onChange("duration", Number(e.target.value))}

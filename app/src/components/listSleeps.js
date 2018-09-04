@@ -11,10 +11,31 @@ const li = sleep => {
   const date = `${month}/${day}`;
   const hour = x.getHours();
   const minute = x.getMinutes();
-  const time = `${hour}:${minute}`;
-  // const rating = sleep.sleepRating;
+  var time = `${hour}:${minute}`;
+  if (minute < 10) {
+    time = `${hour}:0${minute}`;
+  }
+  const rating = sleep.sleepRating;
+  var finalRating = "";
+  if (rating === 0) {
+    finalRating = "bad";
+  } else if (rating === 1) {
+    finalRating = "okay";
+  } else {
+    finalRating = "good";
+  }
+  var umTime = ``;
+  if (hour < 13) {
+    umTime = `${time} a.m.`;
+  } else {
+    if (minute < 10) {
+      umTime = `${hour - 12}:0${minute} p.m.`;
+    } else {
+      umTime = `${hour - 12}:${minute} p.m.`;
+    }
+  }
   const duration = sleep.duration;
-  const second = `Time: ${time}, Date: ${date}, Rating: 1. Duration: ${duration} hours`;
+  const second = `Time: ${umTime}, Date: ${date}, Rating: ${finalRating}. Duration: ${duration} hours`;
   return (
     <Link to={`/sleeps/${sleep._id}`} className="router-link">
       <ListItem button>
